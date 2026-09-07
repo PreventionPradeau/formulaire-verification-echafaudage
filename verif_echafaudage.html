@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapport de Vérification Journalière d'un Échafaudage - Eiffage</title>
+    <style>
+        /* Variables de couleur Eiffage */
+        :root {
+            --eiffage-red: #E30613;
+            --eiffage-blue: #004A8E;
+            --eiffage-grey-dark: #333333;
+            --eiffage-grey-light: #CCCCCC;
+            --eiffage-background: #F4F4F4;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif; /* Typo standard, à remplacer si Eiffage a une police spécifique */
+            margin: 0;
+            padding: 20px;
+            background-color: var(--eiffage-background);
+            color: var(--eiffage-grey-dark);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #FFFFFF;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: var(--eiffage-red);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            border-bottom: 2px solid var(--eiffage-red);
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--eiffage-grey-light);
+            padding-bottom: 5px;
+        }
+        h3 {
+            font-size: 1.3em;
+            color: var(--eiffage-blue); /* Titres de section */
+            margin-top: 25px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid var(--eiffage-grey-light);
+            padding: 12px;
+            text-align: left;
+            vertical-align: top; /* Aligner le contenu en haut des cellules */
+        }
+
+        th {
+            background-color: var(--eiffage-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        td {
+             background-color: #FFFFFF;
+        }
+
+        /* Champs de formulaire */
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        textarea {
+            width: calc(100% - 10px); /* Ajuster largeur pour padding */
+            padding: 8px;
+            border: 1px solid var(--eiffage-grey-light);
+            border-radius: 4px;
+            box-sizing: border-box; /* Important pour que padding n'affecte pas la largeur */
+            font-size: 1em;
+            font-family: 'Arial', sans-serif; /* Cohérence de la police */
+        }
+        textarea {
+            min-height: 80px;
+            resize: vertical; /* Permettre le redimensionnement vertical */
+        }
+
+        /* Style pour les labels dans les tableaux */
+        td label {
+            font-weight: bold;
+            display: block; /* Pour que le label soit au-dessus de l'input */
+            margin-bottom: 5px;
+        }
+
+        /* Section signature */
+        .signature-section table {
+            width: 100%;
+        }
+        .signature-section td {
+            border: none;
+            padding: 10px 5px;
+        }
+        .signature-section td:first-child {
+             width: 50%;
+        }
+
+
+        /* Placeholder pour le logo */
+        .logo-placeholder {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px dashed var(--eiffage-grey-light);
+            background-color: var(--eiffage-background);
+            color: var(--eiffage-grey-light);
+            font-style: italic;
+        }
+
+        /* Pour l'impression PDF */
+        @media print {
+            body {
+                background-color: white;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+                max-width: 100%;
+            }
+            h1, h2, h3 {
+                color: var(--eiffage-red); /* S'assurer que les couleurs restent fidèles à l'impression */
+            }
+            th, td {
+                border-color: var(--eiffage-grey-light);
+            }
+            input, textarea {
+                border-color: var(--eiffage-grey-light);
+            }
+            /* Masquer les éléments non nécessaires à l'impression si besoin */
+             /* .no-print { display: none; } */
+        }
+    </style>
+    <!-- Placeholder pour une police Eiffage (si disponible via Google Fonts par exemple) -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=YourEiffageFont&display=swap" rel="stylesheet"> -->
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Placeholder pour le logo -->
+        <div class="logo-placeholder">
+            [ICI SERA INSÉRÉ LE LOGO EIFFAGE]
+            <!-- Exemple d'insertion si vous avez l'URL : -->
+            <!-- <img src="URL_DE_VOTRE_LOGO_EIFFAGE" alt="Logo Eiffage" style="max-width: 200px; height: auto;"> -->
+        </div>
+
+        <h1>RAPPORT DE VERIFICATION JOURNALIERE D'UN ECHAFAUDAGE</h1>
+
+        <div class="section">
+            <h2>CHANTIER</h2>
+            <table>
+                <tr>
+                    <td><label for="chantier_nom">Nom du chantier :</label></td>
+                    <td><input type="text" id="chantier_nom" name="chantier_nom"></td>
+                    <td><label for="chantier_reference">Référence :</label></td>
+                    <td><input type="text" id="chantier_reference" name="chantier_reference"></td>
+                </tr>
+                <tr>
+                    <td><label for="chantier_adresse">Adresse :</label></td>
+                    <td colspan="3"><input type="text" id="chantier_adresse" name="chantier_adresse"></td>
+                </tr>
+                <tr>
+                    <td><label for="chantier_cp">Code Postal :</label></td>
+                    <td><input type="text" id="chantier_cp" name="chantier_cp" size="10"></td>
+                    <td><label for="chantier_ville">Ville :</label></td>
+                    <td><input type="text" id="chantier_ville" name="chantier_ville" value="Paris"></td>
+                </tr>
+                <tr>
+                    <td><label for="chantier_nature_travaux">Nature des travaux :</label></td>
+                    <td colspan="3"><input type="text" id="chantier_nature_travaux" name="chantier_nature_travaux"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>VERIFICATEURS PMMH</h2>
+            <table>
+                <tr>
+                    <th>Num</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Téléphone</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><input type="text" name="verif1_nom"></td>
+                    <td><input type="text" name="verif1_prenom"></td>
+                    <td><input type="tel" name="verif1_tel"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><input type="text" name="verif2_nom"></td>
+                    <td><input type="text" name="verif2_prenom"></td>
+                    <td><input type="tel" name="verif2_tel"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><input type="text" name="verif3_nom"></td>
+                    <td><input type="text" name="verif3_prenom"></td>
+                    <td><input type="tel" name="verif3_tel"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><input type="text" name="verif4_nom"></td>
+                    <td><input type="text" name="verif4_prenom"></td>
+                    <td><input type="tel" name="verif4_tel"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><input type="text" name="verif5_nom"></td>
+                    <td><input type="text" name="verif5_prenom"></td>
+                    <td><input type="tel" name="verif5_tel"></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><input type="text" name="verif6_nom"></td>
+                    <td><input type="text" name="verif6_prenom"></td>
+                    <td><input type="tel" name="verif6_tel"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h3>1 - IMPLANTATION</h3>
+            <p>L'échafaudage est bien implanté et positionné par rapport à l'ouvrage et à</p>
+            <textarea name="implantation_details"></textarea>
+
+            <h3>2 - CONCEPTION</h3>
+            <p>La notice du fabricant est présente. Elle intègre les spécifications de l'échafaudage ou un plan de montage en complément.</p>
+            <textarea name="conception_details"></textarea>
+
+            <h3>3 - CHARGEMENT</h3>
+            <p>Aucune charge ne dépasse les limites admissibles.</p>
+            <textarea name="chargement_details"></textarea>
+
+            <h3>4 - PLANCHERS</h3>
+            <p>Les planchers sont à la bonne hauteur, jointifs, horizontaux et recouvrent la totalité de la surface dédiée à leur mise en œuvre.</p>
+            <textarea name="planchers_details"></textarea>
+
+            <h3>5 – APPUIS, CALAGES</h3>
+            <p>Les dispositifs de répartition des charges sur l'appui (calage, freinage des roues, immobilisation...) sont en bon état et bien installés.</p>
+            <textarea name="appuis_calages_details"></textarea>
+
+            <h3>6 – AMENAGEMENTS</h3>
+            <p>S'ils existent, tous ces aménagements sont pris en compte dans la conception et sont installés conformément aux prescriptions.</p>
+            <textarea name="amenagements_details"></textarea>
+
+            <h3>7 - STABILITE</h3>
+            <p>Les dispositifs d'amarrage, de contreventement, de vérinage et de stabilisation sont en bon état et bien installés.</p>
+            <textarea name="stabilite_details"></textarea>
+
+            <h3>8 – PROTECTIONS COLLECTIVES</h3>
+            <p>Les protections collectives (garde-corps ou protection) sont présentes, en bon état et bien</p>
+            <textarea name="protections_collectives_details"></textarea>
+
+            <h3>9 – ACCES</h3>
+            <p>Les dispositifs d'accès aux planchers sont présents, en bon état et fonctionnent</p>
+            <textarea name="acces_details"></textarea>
+
+            <h3>10 – SECURISATION</h3>
+            <p>Les éléments de sécurisation et/ou verrouillage sont présents, en bon état et mis en</p>
+            <textarea name="securisation_details"></textarea>
+
+            <h3>11 – AFFICHAGE ET SIGNALETIQUE</h3>
+            <p>Le panneau des charges admissibles et les marquages fabricants sont présents et visibles.</p>
+            <textarea name="affichage_signaletique_details"></textarea>
+
+            <h3>12 - ETAT GENERAL</h3>
+            <p>Il n'y a pas de déformation permanente ou de corrosion des éléments constitutifs de l'échafaudage apparents, pouvant compromettre la sécurité. Les planchers et les accès sont dégagés pour circuler et travailler en sécurité sur</p>
+            <textarea name="etat_general_details"></textarea>
+        </div>
+
+        <div class="section">
+            <h2>Suivi des Vérifications</h2>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Vérificateur</th>
+                    <th>Conforme (O/N)</th>
+                </tr>
+                <tr>
+                    <td><input type="date" name="verif_date_1"></td>
+                    <td><input type="text" name="verif_verificateur_1"></td>
+                    <td><input type="text" name="verif_conforme_1" size="5"></td>
+                </tr>
+                <!-- Ajoutez autant de lignes que nécessaire -->
+                <tr>
+                    <td><input type="date" name="verif_date_2"></td>
+                    <td><input type="text" name="verif_verificateur_2"></td>
+                    <td><input type="text" name="verif_conforme_2" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_3"></td>
+                    <td><input type="text" name="verif_verificateur_3"></td>
+                    <td><input type="text" name="verif_conforme_3" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_4"></td>
+                    <td><input type="text" name="verif_verificateur_4"></td>
+                    <td><input type="text" name="verif_conforme_4" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_5"></td>
+                    <td><input type="text" name="verif_verificateur_5"></td>
+                    <td><input type="text" name="verif_conforme_5" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_6"></td>
+                    <td><input type="text" name="verif_verificateur_6"></td>
+                    <td><input type="text" name="verif_conforme_6" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_7"></td>
+                    <td><input type="text" name="verif_verificateur_7"></td>
+                    <td><input type="text" name="verif_conforme_7" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_8"></td>
+                    <td><input type="text" name="verif_verificateur_8"></td>
+                    <td><input type="text" name="verif_conforme_8" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_9"></td>
+                    <td><input type="text" name="verif_verificateur_9"></td>
+                    <td><input type="text" name="verif_conforme_9" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_10"></td>
+                    <td><input type="text" name="verif_verificateur_10"></td>
+                    <td><input type="text" name="verif_conforme_10" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_11"></td>
+                    <td><input type="text" name="verif_verificateur_11"></td>
+                    <td><input type="text" name="verif_conforme_11" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_12"></td>
+                    <td><input type="text" name="verif_verificateur_12"></td>
+                    <td><input type="text" name="verif_conforme_12" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_13"></td>
+                    <td><input type="text" name="verif_verificateur_13"></td>
+                    <td><input type="text" name="verif_conforme_13" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_14"></td>
+                    <td><input type="text" name="verif_verificateur_14"></td>
+                    <td><input type="text" name="verif_conforme_14" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_15"></td>
+                    <td><input type="text" name="verif_verificateur_15"></td>
+                    <td><input type="text" name="verif_conforme_15" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_16"></td>
+                    <td><input type="text" name="verif_verificateur_16"></td>
+                    <td><input type="text" name="verif_conforme_16" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_17"></td>
+                    <td><input type="text" name="verif_verificateur_17"></td>
+                    <td><input type="text" name="verif_conforme_17" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_18"></td>
+                    <td><input type="text" name="verif_verificateur_18"></td>
+                    <td><input type="text" name="verif_conforme_18" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_19"></td>
+                    <td><input type="text" name="verif_verificateur_19"></td>
+                    <td><input type="text" name="verif_conforme_19" size="5"></td>
+                </tr>
+                 <tr>
+                    <td><input type="date" name="verif_date_20"></td>
+                    <td><input type="text" name="verif_verificateur_20"></td>
+                    <td><input type="text" name="verif_conforme_20" size="5"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section signature-section">
+            <table>
+                <tr>
+                    <td colspan="2"><label for="entreprise_utilisatrice">Entreprise utilisatrice :</label></td>
+                    <td><input type="text" id="entreprise_utilisatrice" name="entreprise_utilisatrice" value="Pradeau Morin Monuments Historiques Echafaudage"></td>
+                </tr>
+                <tr>
+                    <td><label for="representant_util">Représentée par :</label></td>
+                    <td><input type="text" id="representant_util" name="representant_util"></td>
+                    <td><label for="telephone_util">Téléphone :</label></td>
+                    <td><input type="tel" id="telephone_util" name="telephone_util"></td>
+                </tr>
+                <tr>
+                    <td><label for="representant_four">Représentée par :</label></td> <!-- Ce champ semble être pour le fournisseur ou autre partie -->
+                    <td><input type="text" id="representant_four" name="representant_four"></td>
+                    <td><label for="telephone_four">Téléphone :</label></td>
+                    <td><input type="tel" id="telephone_four" name="telephone_four"></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>
